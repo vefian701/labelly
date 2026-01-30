@@ -8,7 +8,7 @@ body {
   background-size: 22px 22px;
   font-family: 'VT323', monospace;
   color: #111;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .cursor {
@@ -23,13 +23,11 @@ body {
   z-index: 999;
 }
 
-.no-cursor * {
-  cursor: default;
-}
+.no-cursor * { cursor: default; }
 
 .layout {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .left {
@@ -38,7 +36,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  transition: transform 0.15s ease;
 }
 
 .left h1 {
@@ -90,15 +87,8 @@ body {
   pointer-events: auto;
 }
 
-h2 {
-  margin: 0 0 6px;
-  font-size: 30px;
-}
-
-.sub {
-  color: #777;
-  font-size: 18px;
-}
+h2 { margin: 0 0 6px; font-size: 30px; }
+.sub { color: #777; font-size: 18px; }
 
 .label {
   border: 2px solid #000;
@@ -115,9 +105,7 @@ h2 {
   font-size: 18px;
 }
 
-.subrow {
-  padding-left: 16px;
-}
+.subrow { padding-left: 16px; }
 
 input {
   width: 90px;
@@ -143,9 +131,7 @@ button {
   transition: 0.25s ease;
 }
 
-button:hover {
-  transform: translateY(-2px);
-}
+button:hover { transform: translateY(-2px); }
 
 .result {
   border: 2px solid #000;
@@ -154,26 +140,17 @@ button:hover {
   margin-top: 10px;
 }
 
-.big-text {
-  font-size: 20px;
-}
+.big-text { font-size: 20px; }
+.verdict { font-size: 30px; margin-bottom: 14px; }
 
-.verdict {
-  font-size: 30px;
-  margin-bottom: 14px;
-}
-
-.section {
-  margin-top: 14px;
-}
-
-.section ul {
-  margin: 6px 0 0;
-  padding-left: 18px;
-}
+.section { margin-top: 14px; }
+.section ul { margin: 6px 0 0; padding-left: 18px; }
 
 .section.warn { color: #9a5b00; }
 .section.tip { color: #006d6f; }
+
+/* SCANNER */
+
 .scanner-modal {
   position: fixed;
   inset: 0;
@@ -184,9 +161,7 @@ button:hover {
   z-index: 9999;
 }
 
-.scanner-modal.active {
-  display: flex;
-}
+.scanner-modal.active { display: flex; }
 
 .scanner-box {
   background: white;
@@ -196,7 +171,45 @@ button:hover {
   text-align: center;
 }
 
-#reader {
-  width: 280px;
-  margin: 14px auto;
+#reader { width: 280px; margin: 14px auto; }
+
+/* MOBILE FIX */
+
+@media (max-width: 900px) {
+
+  .layout {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .left {
+    padding: 20px 10px 10px;
+    text-align: center;
+  }
+
+  .left h1 { font-size: 42px; }
+  .hero-sub { font-size: 20px; }
+  .note {
+    font-size: 16px;
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .right {
+    width: 100%;
+  }
+
+  .card {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    margin-top: 20px;
+    transform: none;
+  }
+
+  input { width: 80px; }
+  button { font-size: 18px; }
+
+  .scanner-box { width: 92vw; }
+  #reader { width: 85vw; }
 }
