@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Labelly</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div class="cursor"></div>
+
+  <div class="layout">
+
+    <div class="left">
+      <h1><span class="underline">understand your food.</span></h1>
+
+      <p class="hero-sub">
+        numbers show facts.<br>
+        <strong>we show meaning.</strong>
+      </p>
+
+      <div class="note">
+        people only look at calories & protein.<br>
+        real health hides in fiber, sugar & sodium.
+      </div>
+    </div>
+
+    <div class="right">
+
+      <!-- SCANNER MODAL -->
+      <div id="scannerModal" class="scanner-modal">
+        <div class="scanner-box">
+          <h2>scan barcode</h2>
+          <div id="reader"></div>
+          <button onclick="closeScanner()">cancel</button>
+        </div>
+      </div>
+
+      <div id="page1" class="card active">
+        <h2>nutrition label</h2>
+        <span class="sub">per 100g</span>
+
+        <div class="label no-cursor">
+          <div class="row"><span>Energy (kcal)</span><input id="calories" type="number"></div>
+          <div class="row"><span>Protein (g)</span><input id="protein" type="number"></div>
+          <div class="row"><span>Carbs (g)</span><input id="carbs" type="number"></div>
+          <div class="subrow"><span>Sugar (g)</span><input id="sugar" type="number"></div>
+          <div class="subrow"><span>Added Sugar (g)</span><input id="addedSugar" type="number"></div>
+          <div class="row"><span>Fat (g)</span><input id="fat" type="number"></div>
+          <div class="row"><span>Fiber (g)</span><input id="fiber" type="number"></div>
+          <div class="row"><span>Sodium (mg)</span><input id="sodium" type="number"></div>
+        </div>
+
+        <button onclick="openScanner()">scan barcode 📷</button>
+        <button onclick="analyze()">analyze →</button>
+      </div>
+
+      <div id="page2" class="card">
+
+        <h2>analysis</h2>
+
+        <div class="result big-text" id="resultCard">
+
+          <div id="verdict" class="verdict"></div>
+
+          <div class="section">
+            <strong>what’s good</strong>
+            <ul id="goodList"></ul>
+          </div>
+
+          <div class="section warn">
+            <strong>what to watch</strong>
+            <ul id="warnList"></ul>
+          </div>
+
+          <div class="section">
+            <strong>what this means</strong>
+            <p id="meaning"></p>
+          </div>
+
+          <div class="section tip">
+            <strong>how to balance</strong>
+            <p id="tip"></p>
+          </div>
+
+        </div>
+
+        <button onclick="downloadCard()">download</button>
+        <button onclick="goBack()">← edit</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/html5-qrcode"></script>
+  <script src="script.js"></script>
+</body>
+</html>
